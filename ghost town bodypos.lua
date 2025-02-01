@@ -38,7 +38,7 @@ coroutine.wrap(function()
 
   local position1 = pos.Position -- Starting position
 
-  local position2 = Vector3.new(-200, 150, -120000) -- Target position
+  local position2 = Vector3.new(-200, 150, -21000 * 6.5) -- Target position
   
   -- Time to complete the movement
   local moveDuration = 30 -- Seconds
