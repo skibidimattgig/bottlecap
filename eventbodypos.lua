@@ -19,7 +19,10 @@ coroutine.wrap(function()
 
 
   coroutine.wrap(function()
-    while task.wait() do char.Humanoid.WalkSpeed = 50 end
+    while task.wait() do
+        char.Humanoid.WalkSpeed = 50
+        char.Humanoid.JumpPower = 100
+    end
   end)()
 
   local position1 = pos.Position -- Starting position
