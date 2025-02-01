@@ -14,6 +14,7 @@ while player do
             e:FireServer(b)
             b:Destroy()
         end
+        v:Destroy()
     end
 task.wait(0.325)
 end
