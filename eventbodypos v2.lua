@@ -40,10 +40,10 @@ coroutine.wrap(function()
   local position1 = pos.Position -- Starting position
 
   local position2 = Vector3.new(-200, 150, -9100) -- Target position
-  local position3 = Vector3.new(-200, 150, -46000) -- Target position
+  local position3 = Vector3.new(-200, 750, -46000) -- Target position
   -- Time to complete the movement
   local moveDuration = 2 -- Seconds
-  local moveDuration2 = 10 -- Seconds
+  local moveDuration2 = 12 -- Seconds
   -- Function to smoothly drag the character
   local function dragCharacter(v)
       local character = char
@@ -54,7 +54,9 @@ coroutine.wrap(function()
       bodyPosition.MaxForce = Vector3.new(1e6,1e6,1e6) -- Large enough to overcome any forces
       bodyPosition.P = 321312 -- Power of the force
       bodyPosition.D = 5000 -- Damping
-      bodyPosition.Position = position2
+       bodyPosition.Position = position1
+      if v == true then bodyPosition.Position = position2 end 
+     
       bodyPosition.Parent = humanoidRootPart
           local md = moveDuration
           if v == true then md = moveDuration2 end
@@ -96,9 +98,10 @@ coroutine.wrap(function()
     end)
     
       repeat task.wait() until key ~= ""
-
+        
+  hrp.CFrame += Vector3.new(0, 500, 0)
       dragCharacter(true)
-
+      
       local p1 = workspace:FindFirstChild("Dragon", true).CFrame + Vector3.new(0, 25, 0)
       hrp.CFrame = p1 + p1.LookVector*100
   end)()
