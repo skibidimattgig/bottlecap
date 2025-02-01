@@ -33,7 +33,9 @@ coroutine.wrap(function()
     end
   end)()
 
-  hrp.CFrame += Vector3.new(0, 50, 0
+  hrp.CFrame += Vector3.new(0, 50, 0)
+  local fixedRotation = CFrame.Angles(0, math.rad(90), 0)  -- Rotate 90 degrees on the Y axis
+   hrp.CFrame = CFrame.new(hrp.Position) * fixedRotation
   local position1 = pos.Position -- Starting position
 
   local position2 = Vector3.new(-200, 150, -9100) -- Target position
