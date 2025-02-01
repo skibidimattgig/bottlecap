@@ -103,8 +103,8 @@ coroutine.wrap(function()
       dragCharacter(true)
       
       local p1 = workspace:FindFirstChild("Dragon", true).CFrame + Vector3.new(0, 25, 0)
-      hrp.CFrame = p1 + p1.LookVector*-80 + p1.RightVector*-350
+      hrp.CFrame = p1 + p1.LookVector*-35 + p1.RightVector*-350
       hrp.CFrame -= Vector3.new(0, 65, 0)
-      task.wait(1.65)
+      task.wait(1.3)
       e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
   end)()
