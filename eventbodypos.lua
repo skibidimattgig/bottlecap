@@ -9,7 +9,15 @@ coroutine.wrap(function()
   local pos = hrp.CFrame
   
   local e = game.ReplicatedStorage:FindFirstChild("OPEN_INVENTORY", true)
-  
+  local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
+  workspace.DescendantAdded:Connect(function(v)
+      if v.Name ~= "RedEnvelope" then return end
+
+      pcall(function()
+        e2:FireServer(v)
+      end)
+  end)
+
   local position1 = pos.Position -- Starting position
   local position2 = Vector3.new(-200, 100, -9100) -- Target position
   
