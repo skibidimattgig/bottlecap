@@ -17,6 +17,9 @@ coroutine.wrap(function()
         e2:FireServer(v)
       end)
   end)
+  coroutine.wrap(function()
+    while task.wait() do char.Humanoid.WalkSpeed = 50 end
+  end)()
 
   local position1 = pos.Position -- Starting position
   local position2 = Vector3.new(-200, 100, -9100) -- Target position
