@@ -14,7 +14,7 @@ coroutine.wrap(function()
     
   coroutine.wrap(function()
     while task.wait() do
-       e2:FireServer(workspace:FindFirstChild("RedEnvelopeHolder", true))
+       for _, v in workspace:GetChildren() do if v.Name ~= "RedEnvelopeHolder" then continue end e2:FireServer(v) end
     end
   end)()
   mouse.KeyDown:Connect(function(key)
