@@ -16,7 +16,11 @@ coroutine.wrap(function()
        e2:FireServer(workspace:FindFirstChild("RedEnvelopeHolder", true)
     end
   end)()
-
+  mouse.KeyDown:Connect(function(key)
+      if key == "g" then
+          e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0)
+      end
+  end)
 
   coroutine.wrap(function()
     while task.wait() do
