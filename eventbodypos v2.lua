@@ -54,8 +54,8 @@ coroutine.wrap(function()
       bodyPosition.MaxForce = Vector3.new(1e6,1e6,1e6) -- Large enough to overcome any forces
       bodyPosition.P = 321312 -- Power of the force
       bodyPosition.D = 5000 -- Damping
-       bodyPosition.Position = position1
-      if v == true then bodyPosition.Position = position2 end 
+      
+      if v == true then bodyPosition.Position = position2 else  bodyPosition.Position = position1 end 
      
       bodyPosition.Parent = humanoidRootPart
           local md = moveDuration
