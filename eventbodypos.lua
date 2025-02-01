@@ -11,7 +11,7 @@ coroutine.wrap(function()
   local e = game.ReplicatedStorage:FindFirstChild("OPEN_INVENTORY", true)
   local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
   coroutine.wrap(function()
-    while task.wait() do
+    while task.wait(.1) do
       for _, v in workspace:GetChildren() do
         if v.Name ~= "RedEnvelope" then continue end
 
@@ -19,7 +19,7 @@ coroutine.wrap(function()
           e2:FireServer(v)
         end)
         pcall(function()
-          e2:FireServer(v:FindFirstChild("RedEnvelope", true)
+          e2:FireServer(v:FindFirstChild("RedEnvelope", true))
         end)
       end
     end
