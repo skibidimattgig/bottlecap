@@ -12,20 +12,8 @@ coroutine.wrap(function()
   local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
     
   coroutine.wrap(function()
-    while task.wait(0.1) do
-      for _, v in workspace:GetChildren() do
-        if v.Name ~= "RedEnvelope" then
-          continue
-        end
-  
-        e2:FireServer(v)
-  
-        -- Only attempt to find a child if needed (in this case, it's redundant)
-        local envelopeChild = v:FindFirstChild("RedEnvelope", true)
-        if envelopeChild then
-          e2:FireServer(envelopeChild)
-        end
-      end
+    while task.wait() do
+       e2:FireServer(workspace:FindFirstChild("RedEnvelope", true)
     end
   end)()
 
