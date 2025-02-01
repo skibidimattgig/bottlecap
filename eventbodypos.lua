@@ -1,6 +1,7 @@
 coroutine.wrap(function()
   local Players = game:GetService("Players")
   local LocalPlayer = Players.LocalPlayer
+  local mouse = LocalPlayer:GetMouse()
   
   local char = LocalPlayer.Character
   local hrp = char.HumanoidRootPart
