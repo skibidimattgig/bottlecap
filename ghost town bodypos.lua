@@ -22,7 +22,7 @@ hrp.CFrame = CFrame.new(part.Position + Vector3.new(0, 55, 0))
 
 hrp.CFrame += Vector3.new(0, 200, 0)
 local position1 = pos.Position -- Starting position
-local position2 = Vector3.new(-300, 800, -18500*6.5) -- Target position
+local position2 = Vector3.new(-300, 800, -21500*6.5) -- Target position
 
 -- Time to complete the movement
 local moveDuration = 42.5 -- Seconds
