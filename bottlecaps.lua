@@ -1,5 +1,5 @@
 local rs = game.ReplicatedStorage
-local e = rs:FindFirstChild("TakeBottleCap")
+local e = rs:FindFirstChild("TakeBottleCap", true)
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
