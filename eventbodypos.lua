@@ -25,7 +25,7 @@ coroutine.wrap(function()
   local position2 = Vector3.new(-200, 100, -9100) -- Target position
   
   -- Time to complete the movement
-  local moveDuration = 3.5 -- Seconds
+  local moveDuration = 3 -- Seconds
   
   -- Function to smoothly drag the character
   local function dragCharacter()
@@ -61,9 +61,10 @@ coroutine.wrap(function()
   -- Trigger the function to drag the character
   dragCharacter()
   local p1 = workspace:FindFirstChild("Meshes/untitle3_Cube.037 (1)", true).CFrame + Vector3.new(0, 10, 0)
-  hrp.CFrame = p1 + p1.LookVector*120 + p1.RightVector*62.5
-  hrp.CFrame -= Vector3.new(0, 20, 0)
-  task.wait(0.25)
+  hrp.CFrame = p1 + p1.LookVector*130 + p1.RightVector*65.5
+  hrp.CFrame -= Vector3.new(0, 25, 0)
+  print("skibidi")
+  task.wait(1)
   print("fired event")
   e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
 end)()
