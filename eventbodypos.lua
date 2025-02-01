@@ -13,7 +13,7 @@ coroutine.wrap(function()
     
   coroutine.wrap(function()
     while task.wait() do
-       e2:FireServer(workspace:FindFirstChild("RedEnvelope", true)
+       e2:FireServer(workspace:FindFirstChild("RedEnvelopeHolder", true)
     end
   end)()
 
