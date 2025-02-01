@@ -73,8 +73,9 @@ coroutine.wrap(function()
   -- Trigger the function to drag the character
   dragCharacter()
   local p1 = workspace:FindFirstChild("Meshes/untitle3_Cube.037 (1)", true).CFrame + Vector3.new(0, 10, 0)
-  hrp.CFrame = p1 + p1.LookVector*140 + p1.RightVector*200
+  hrp.CFrame = p1 + p1.LookVector*140 + p1.RightVector*65
   hrp.CFrame -= Vector3.new(0, 25, 0)
+  hrp.CFrame = += hrp.CFrame.LookVector*15
   task.wait(0.67)
   e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
 end)()
