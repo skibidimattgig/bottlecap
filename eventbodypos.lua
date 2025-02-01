@@ -13,9 +13,13 @@ coroutine.wrap(function()
   local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
     
   coroutine.wrap(function()
-    while task.wait() do
-       for _, v in workspace:GetChildren() do if v.Name ~= "RedEnvelopeHolder" then continue end e2:FireServer(v) end
-    end
+    repeat
+          for _, v in workspace:GetChildren() do
+            if v.Name ~= "RedEnvelopeHolder" then continue end
+            e2:FireServer(v)
+          end
+          task.wait()
+    until false
   end)()
   mouse.KeyDown:Connect(function(key)
       if key == "g" then return end
