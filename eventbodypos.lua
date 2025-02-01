@@ -81,6 +81,6 @@ coroutine.wrap(function()
   hrp.CFrame = p1 + p1.LookVector*140 + p1.RightVector*65
   hrp.CFrame -= Vector3.new(0, 25, 0)
   hrp.CFrame = hrp.CFrame + hrp.CFrame.LookVector*15
-  task.wait(0.67)
+  task.wait(0.5)
   e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
 end)()
