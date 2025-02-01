@@ -10,17 +10,6 @@ coroutine.wrap(function()
   local pos = hrp.CFrame
   
   local e = game.ReplicatedStorage:FindFirstChild("OPEN_INVENTORY", true)
-  local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
-    
-  coroutine.wrap(function()
-    repeat
-          for _, v in workspace:GetChildren() do
-            if v.Name ~= "RedEnvelopeHolder" then continue end
-            e2:FireServer(v)
-          end
-          task.wait()
-    until false
-  end)()
   
   mouse.KeyDown:Connect(function(key)
       if key ~= "g" then return end
