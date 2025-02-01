@@ -21,6 +21,7 @@ coroutine.wrap(function()
           task.wait()
     until false
   end)()
+  
   mouse.KeyDown:Connect(function(key)
       if key ~= "g" then return end
       e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
