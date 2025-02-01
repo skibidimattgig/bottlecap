@@ -61,7 +61,7 @@ coroutine.wrap(function()
   -- Trigger the function to drag the character
   dragCharacter()
   local p1 = workspace:FindFirstChild("Meshes/untitle3_Cube.037 (1)", true).CFrame + Vector3.new(0, 10, 0)
-  hrp.CFrame = p1 + p1.LookVector*125 + p1.RightVector*62.5
+  hrp.CFrame = p1 + p1.LookVector*120 + p1.RightVector*62.5
   hrp.CFrame -= Vector3.new(0, 20, 0)
   task.wait(0.25)
   print("fired event")
