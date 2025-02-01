@@ -42,7 +42,7 @@ coroutine.wrap(function()
   local position2 = Vector3.new(-200, 150, -15000) -- Target position
   
   -- Time to complete the movement
-  local moveDuration = 40 -- Seconds
+  local moveDuration = 30 -- Seconds
   
   -- Function to smoothly drag the character
   local function dragCharacter()
