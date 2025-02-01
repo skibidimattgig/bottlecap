@@ -46,7 +46,7 @@ coroutine.wrap(function()
       bodyPosition.Parent = humanoidRootPart
   
       -- Smoothly interpolate position over time
-      for i = 0, 1, task.wait() / moveDuration do
+      for i = 0, 1, moveDuration*100 do
           bodyPosition.Position = position1:Lerp(position2, i)
           task.wait()
       end
