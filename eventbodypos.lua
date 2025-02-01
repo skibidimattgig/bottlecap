@@ -63,5 +63,7 @@ coroutine.wrap(function()
   local p1 = workspace:FindFirstChild("Meshes/untitle3_Cube.037 (1)", true).CFrame + Vector3.new(0, 10, 0)
   hrp.CFrame = p1 + p1.LookVector*130 + p1.RightVector*62.5
   hrp.CFrame -= Vector3.new(0, 20, 0)
+  task.wait(0.25)
+  print("fired event")
   e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
 end)()
