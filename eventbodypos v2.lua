@@ -95,9 +95,9 @@ coroutine.wrap(function()
         key = "a"
     end)
     
-    repeat task.wait() until key ~= ""
+      repeat task.wait() until key ~= ""
 
-     dragCharacter(true)
+      dragCharacter(true)
 
       local p1 = workspace:FindFirstChild("Dragon", true).CFrame + Vector3.new(0, 25, 0)
       hrp.CFrame = p1 + p1.LookVector*100
