@@ -4,16 +4,59 @@ local LocalPlayer = Players.LocalPlayer
 local char = LocalPlayer.Character
 local hrp = char.HumanoidRootPart
 local t = LocalPlayer:GetMouse().Target
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+    local e = game.ReplicatedStorage:FindFirstChild("OPEN_INVENTORY", true)
+  mouse.KeyDown:Connect(function(key)
+      if key ~= "g" then return end
+      e:FireServer(hrp.CFrame + hrp.CFrame.LookVector*5 - Vector3.new(0, 2.5, 0))
+  end)
+
+char.Humanoid.WalkSpeed = 1000
+
+local i = false
+
+coroutine.wrap(function()
+        local deb = false
+        local deb2 = false
+        repeat
+            for _, v in workspace:GetChildren() do
+                if not string.find(string.lower(v.Name), "junk") and not string.find(string.lower(v.Name), "duck") then continue end
+                Instance.new("Highlight", v)
+                if not deb then
+                    local f = Instance.new("Message")
+                    f.Text = "junk gun or duck somewhere"
+                    f.Parent = workspace
+                    print("YOOOO RARE ITEM", game.Players.LocalPlayer.Character.Head.Position)
+                    game.Debris:AddItem(f, 10)
+                end
+                if not deb then deb = true end
+            end
+        task.wait(.1)
+        until false
+end)()
+
+mouse.KeyDown:Connect(function(key)
+    if key == "t" then
+        i = not i
+        if i then
+            char.Humanoid.WalkSpeed = 50
+        else
+             char.Humanoid.WalkSpeed = 1000
+        end
+    end
+end)
 
 local pos = hrp.CFrame
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidimattgig/bottlecap/refs/heads/main/fogremover.lua"))()
 
 local part = Instance.new("Part", workspace)
 part.Anchored = true
 part.Size = Vector3.new(1000, 50, 1000)
+part.Transparency = 0.9
 coroutine.wrap(function()
 repeat
-part.Position = Vector3.new(hrp.Position.X, 500, hrp.Position.Z)
+part.Position = Vector3.new(hrp.Position.X, 1050, hrp.Position.Z)
 task.wait()
 until false
 end)()
@@ -22,10 +65,10 @@ hrp.CFrame = CFrame.new(part.Position + Vector3.new(0, 55, 0))
 
 hrp.CFrame += Vector3.new(0, 200, 0)
 local position1 = pos.Position -- Starting position
-local position2 = Vector3.new(-300, 800, -21500*6.5) -- Target position
+local position2 = Vector3.new(200, 900, -142230.890) -- Target position
 
 -- Time to complete the movement
-local moveDuration = 42.5 -- Seconds
+local moveDuration = 46 -- Seconds
 
 -- Function to smoothly drag the character
 local function dragCharacter()
