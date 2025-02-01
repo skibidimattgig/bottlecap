@@ -34,7 +34,6 @@ coroutine.wrap(function()
     end
   end)()
 
-  char:PivotTo(CFrame.new(0, 50, 0))
   hrp.CFrame += Vector3.new(0, 50, 0)
 
   local position1 = pos.Position -- Starting position
