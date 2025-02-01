@@ -10,13 +10,20 @@ coroutine.wrap(function()
   
   local e = game.ReplicatedStorage:FindFirstChild("OPEN_INVENTORY", true)
   local e2 = game.ReplicatedStorage:FindFirstChild("UseRedEnvelope", true)
-  workspace.DescendantAdded:Connect(function(v)
-      if v.Name ~= "RedEnvelope" then return end
+  coroutine.wrap(function()
+    while task.wait() do
+      for _, v in workspace:GetChildren() do
+        if v.Name ~= "RedEnvelope" then continue end
 
-      pcall(function()
-        e2:FireServer(v)
-      end)
-  end)
+        pcall(function()
+          e2:FireServer(v)
+        end)
+        pcall(function()
+          e2:FireServer(v:FindFirstChild("RedEnvelope", true)
+        end)
+      end
+    end
+  end)()
   coroutine.wrap(function()
     while task.wait() do char.Humanoid.WalkSpeed = 50 end
   end)()
