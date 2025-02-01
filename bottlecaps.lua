@@ -12,6 +12,7 @@ while player do
         for _, b in v:GetDescendants() do
             if b.Name ~= "BottleCap" then continue end
             e:FireServer(b)
+            b:Destroy()
         end
     end
 task.wait(0.325)
