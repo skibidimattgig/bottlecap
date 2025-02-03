@@ -70,7 +70,7 @@ local position1 = pos.Position -- Starting position
 local position2 = Vector3.new(200, 900, -142230.890) -- Target position
 
 -- Time to complete the movement
-local moveDuration = 46 -- Seconds
+local moveDuration = 27 -- Seconds
 
 -- Function to smoothly drag the character
 local function dragCharacter()
