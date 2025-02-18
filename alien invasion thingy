@@ -25,8 +25,8 @@ if not Area51 then
     return
 end
 
-local areas = {Area51}
-
+local areas = {}
+table.insert(areas, Area51)
 -- Function to find the nearest R6 humanoid torso
 local function getNearestTorso()
     local nearestTorso = nil
