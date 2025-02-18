@@ -32,24 +32,40 @@ local function getNearestTorso()
     local nearestTorso = nil
     local shortestDistance = MaxTargetDistance
 
-    for _, v in ipairs(areas) do
-        for _, descendant in ipairs(v:GetDescendants()) do
-        if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
-            local character = descendant.Parent
-            if character and character:IsA("Model") then
-                local torso = character:FindFirstChild("Torso") -- R6 rigs use "Torso"
-                if torso and descendant ~= Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
-                    local distance = (Camera.CFrame.Position - torso.Position).Magnitude
-
-                    if distance < shortestDistance then
-                        shortestDistance = distance
-                        nearestTorso = torso
+       for _, descendant in ipairs(Area51:GetDescendants()) do
+            if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
+                local character = descendant.Parent
+                if character and character:IsA("Model") then
+                    local torso = character:FindFirstChild("Torso") -- R6 rigs use "Torso"
+                    if torso and descendant ~= Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+                        local distance = (Camera.CFrame.Position - torso.Position).Magnitude
+    
+                        if distance < shortestDistance then
+                            shortestDistance = distance
+                            nearestTorso = torso
+                        end
                     end
                 end
             end
         end
-    end
-    end
+        if workspace.RoadPrefabs:FindFirstChild("Area51") then
+            for _, descendant in ipairs(workspace.RoadPrefabs:FindFirstChild("Area51"):GetDescendants()) do
+            if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
+                local character = descendant.Parent
+                if character and character:IsA("Model") then
+                    local torso = character:FindFirstChild("Torso") -- R6 rigs use "Torso"
+                    if torso and descendant ~= Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+                        local distance = (Camera.CFrame.Position - torso.Position).Magnitude
+    
+                        if distance < shortestDistance then
+                            shortestDistance = distance
+                            nearestTorso = torso
+                        end
+                    end
+                end
+            end
+        end
+        end
 
     return nearestTorso
 end
