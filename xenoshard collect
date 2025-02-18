@@ -1,0 +1,23 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+
+local LocalPlayer = Players.LocalPlayer
+local e2 = ReplicatedStorage:FindFirstChild("UseXenoShard", true)
+local fired = {}
+
+-- Function to handle new XenoShard parts
+local function onDescendantAdded(v)
+    if v:IsA("BasePart") and v.Name == "XenoShard" and not fired[v] then
+        fired[v] = true
+        e2:FireServer(v)
+    end
+end
+
+-- Check existing XenoShards
+for _, v in Workspace:GetDescendants() do
+    onDescendantAdded(v)
+end
+
+-- Listen for new descendants being added anywhere in workspace
+Workspace.DescendantAdded:Connect(onDescendantAdded)
