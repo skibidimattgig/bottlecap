@@ -1,0 +1,257 @@
+local player = game.Players.LocalPlayer 
+
+local function func()
+    local char = player.Character or player.CharacterAdded:Wait()
+    local mouse = player:GetMouse()
+
+    local speed = 0
+    local resetSpeed = "y"
+    local default_speed = 1.3
+    local flyBind = "h"
+    local flying = false
+
+    speed = default_speed
+
+    local hrp = char:WaitForChild("HumanoidRootPart")
+
+    local name = "fly-matron 3000"
+
+    -- ui
+
+    local hint = Instance.new("Hint")
+    hint.Parent = workspace
+    hint.Text = "please wait, initializing "..name
+    game.Debris:AddItem(hint, 5)
+    if player:WaitForChild("PlayerGui"):FindFirstChild(name) then hint.Text = "you already have this script running!!" task.wait(2) return end
+    hint.Text = "success! enjoy 🦖🦖🦖"
+
+    local cons = {}
+
+    local function make(class, properties)
+        local instance = Instance.new(class)
+        for i, v in properties do
+            instance[i] = v
+        end
+        return instance
+    end
+
+    local ui = make("ScreenGui", 
+        {
+            ResetOnSpawn = true,
+                Name = name,
+            Parent = player.PlayerGui
+        }		
+    )
+    local frame = make("ImageLabel", 
+        {
+            Image = "rbxassetid://13333189485",
+            ImageColor3 = Color3.fromRGB(75, 75, 75),
+            Size = UDim2.new(0.198, 0, 0.165, 0),
+            Position = UDim2.new(0, 0, 0.835, 0),
+            Name = "main",
+            Parent = ui,
+            ZIndex = math.huge
+        }		
+    )
+    local dd = Instance.new("UIDragDetector", frame)
+    local title = make("TextLabel", 
+        {
+            Text = name,
+            FontFace = Font.fromId(12187365977),
+            TextStrokeTransparency = 0,
+            BackgroundTransparency = 1,
+            TextScaled = true,
+            BackgroundColor3 = Color3.fromRGB(255, 0, 0),
+            TextColor3 = Color3.fromRGB(255,255,255),
+            Size = UDim2.new(0.999, 0,0.265, 0),
+            Position = UDim2.new(0, 0, -0.271, 0),
+            Parent = frame
+        }		
+    )
+    local watermark = make("TextLabel", 
+        {
+            Text = "press "..flyBind.." to go into fly mode | made by jaialaitruculent on discord",
+            BackgroundTransparency = 1,
+            TextScaled = true,
+            TextColor3 = Color3.fromRGB(189, 189, 189),
+            Size = UDim2.new(1, 0,0.228, 0),
+            Position = UDim2.new(0, 0, .777, 0),
+            Parent = frame
+        }		
+    )
+
+    local close = make("TextButton", 
+        {
+            Text = "CLOSE",
+            FontFace = Font.fromId(12187365977),
+            TextScaled = true,
+            BackgroundColor3 = Color3.fromRGB(255, 0, 0),
+            TextColor3 = Color3.fromRGB(255,255,255),
+            Size = UDim2.new(.331, 0, 0.22, 0),
+            Position = UDim2.new(0.999, 0, .777, 0),
+            Parent = frame
+        }		
+    )
+    local timesPresesed = 0
+    local limit = 3
+    close.Text = "STOP ("..timesPresesed.."/"..limit..")"
+    local con
+    con = close.MouseButton1Click:Connect(function()
+        timesPresesed += 1
+        close.Text = "STOP ("..timesPresesed.."/"..limit..")"
+        if timesPresesed >= limit then
+            flying = false
+            for _, v in cons do
+                if v then v:Disconnect() end
+            end
+            table.clear(cons)
+            
+            ui:Destroy()
+        end
+    end)
+    coroutine.wrap(function()
+        repeat
+            task.wait(7.5)
+            if timesPresesed > 1 then
+                timesPresesed -= 1
+                close.Text = "STOP ("..timesPresesed.."/"..limit..")"
+            end
+        until not ui
+    end)()
+    local textbox = make("TextBox", 
+        {
+            Text = "",
+            PlaceholderText = "enter speed (number)",
+            FontFace = Font.fromId(12187371840),
+            BackgroundColor3 = Color3.fromRGB(108, 102, 94),
+            BorderSizePixel = 3,
+            TextScaled = true,
+            TextColor3 = Color3.fromRGB(255,255,255),
+            Size = UDim2.new(0.433, 0,0.221, 0),
+            Position = UDim2.new(0.54, 0, 0.053, 0),
+            Parent = frame
+        }		
+    )
+
+
+
+    coroutine.wrap(function()
+        repeat
+            speed = tonumber(textbox.Text) or default_speed
+            
+            if flying then
+                local pos = mouse.Hit.p
+                
+                local pos2 = hrp.Position
+                
+                hrp.CFrame = CFrame.lookAt(pos2, Vector3.new(pos.X, pos.Y, pos.Z))
+            end
+            
+            task.wait()
+        until not ui
+    end)()
+
+    local holding = {
+        w = false,
+        s = false,
+        a = false,
+        d = false,
+        [" "] = false,
+        ["2"] = false
+    }
+
+    local function pivot(pos)
+        hrp:PivotTo(pos)
+    end
+
+    local cam = workspace.CurrentCamera
+
+    local hum = char.Humanoid
+
+    local keys = {}
+
+    local dir
+
+    local function move(keys)
+        pcall(function()
+            local combinedDirection = Vector3.zero -- Start with no direction
+            local cameraCFrame = cam.CFrame -- Get the camera's CFrame
+
+            -- Process all pressed keys
+            for _, key in ipairs(keys) do
+                local pos
+                if key == "w" then
+                    pos = cameraCFrame.LookVector
+                elseif key == "s" then
+                    pos = cameraCFrame.LookVector * -1
+                elseif key == "a" then
+                    pos = cameraCFrame.RightVector * -1
+                elseif key == "d" then
+                    pos = cameraCFrame.RightVector
+                elseif key == " " then
+                    -- Move upward
+                    pos = Vector3.new(0, 1, 0)
+                elseif key == "2" then
+                    -- Move downward
+                    pos = Vector3.new(0, -1, 0)
+                end
+
+                -- Combine the movement direction
+                if pos then
+                    combinedDirection = combinedDirection + pos
+                end
+            end
+            
+            if combinedDirection.Magnitude > 1 then
+                combinedDirection = combinedDirection.Unit
+            end
+            
+            
+            combinedDirection *= speed
+            dir = combinedDirection
+
+            -- Apply the movement to the character
+            local newPosition = hrp.CFrame + dir
+            pivot(newPosition)
+        end)
+    end
+
+
+
+    local con = mouse.KeyDown:Connect(function(key)
+        if key == flyBind then
+            flying = not flying
+            hrp.Anchored = flying
+        elseif key == resetSpeed then
+            dir = Vector3.new(.01,.01,.01)
+        end
+        pcall(function()
+            if holding[key] == true then return end
+
+            holding[key] = true
+            table.insert(keys, key)
+
+        end)
+    end)
+    coroutine.wrap(function()
+        repeat
+            task.wait()
+            if flying then
+                move(keys)  -- Pass the keys to the move function
+            end
+        until not ui
+    end)()
+
+
+    local con = mouse.KeyUp:Connect(function(key)
+        pcall(function()
+            table.remove(keys, table.find(keys, key))
+            holding[key] = false
+        end)
+    end)
+    table.insert(cons, con)
+end
+func()
+player.CharacterAdded:Connect(function(char)
+    func()
+end)
