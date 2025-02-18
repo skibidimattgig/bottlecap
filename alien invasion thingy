@@ -25,12 +25,15 @@ if not Area51 then
     return
 end
 
+local areas = {Area51}
+
 -- Function to find the nearest R6 humanoid torso
 local function getNearestTorso()
     local nearestTorso = nil
     local shortestDistance = MaxTargetDistance
 
-    for _, descendant in ipairs(Area51:GetDescendants()) do
+    for _, v in {areas} do
+        for _, descendant in ipairs(v:GetDescendants()) do
         if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
             local character = descendant.Parent
             if character and character:IsA("Model") then
@@ -45,6 +48,7 @@ local function getNearestTorso()
                 end
             end
         end
+    end
     end
 
     return nearestTorso
@@ -88,41 +92,4 @@ if not Area51 then
     warn("Area51 not found in workspace")
     return
 end
-
--- Function to find the nearest R6 humanoid torso
-local function getNearestTorso()
-    local nearestTorso = nil
-    local shortestDistance = MaxTargetDistance
-
-    for _, descendant in ipairs(Area51:GetDescendants()) do
-        if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
-            local character = descendant.Parent
-            if character and character:IsA("Model") then
-                local torso = character:FindFirstChild("Torso") -- R6 rigs use "Torso"
-                if torso and descendant ~= Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
-                    local distance = (Camera.CFrame.Position - torso.Position).Magnitude
-
-                    if distance < shortestDistance then
-                        shortestDistance = distance
-                        nearestTorso = torso
-                    end
-                end
-            end
-        end
-    end
-
-    return nearestTorso
-end
-
--- Function to instantly aim at the nearest humanoid torso
-local function updateCamera()
-    local targetTorso = getNearestTorso()
-    if targetTorso then
-        local targetPosition = targetTorso.Position
-        local direction = (targetPosition - Camera.CFrame.Position).Unit
-        Camera.CFrame = CFrame.new(Camera.CFrame.Position, Camera.CFrame.Position + direction)
-    end
-end
-
--- Bind to RenderStep for real-time aiming
-RunService:BindToRenderStep("InstantAimAtTorso", Enum.RenderPriority.Camera.Value + 1, updateCamera)
+table.insert(areas, Area51)
