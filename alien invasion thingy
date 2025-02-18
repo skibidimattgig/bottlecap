@@ -32,7 +32,7 @@ local function getNearestTorso()
     local nearestTorso = nil
     local shortestDistance = MaxTargetDistance
 
-    for _, v in areas do
+    for _, v in ipairs(areas) do
         for _, descendant in ipairs(v:GetDescendants()) do
         if descendant:IsA("Humanoid") and descendant.Health > 0 then -- Ignore dead humanoids
             local character = descendant.Parent
