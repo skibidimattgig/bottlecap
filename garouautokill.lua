@@ -5,15 +5,28 @@ local con
 local uis = game:GetService("UserInputService")
 local pos2 = CFrame.new(438, 500, -376)
 
+pcall(function()
+    workspace.Hint:Destroy()
+end)
+local msg = Instance.new("Hint")
+msg.Parent = workspace
+msg.Text = "tsb ultimate script made by debnik twenty three oh yeahh swifty voice so hotoh yeahhh "
+game.Debris:AddItem(msg, 5)
 local function doFunc()
     local char = player.Character or player.CharacterAdded:Wait()
     local hrp = char.HumanoidRootPart
     con = uis.InputBegan:Connect(function(key, gpe)
         if gpe then return end
         if key.KeyCode ~= Enum.KeyCode.Two and key.KeyCode ~= Enum.KeyCode.One then return end
-		
-	task.wait(1.5)
-        local stop = false
+		 local stop = false
+         local con3
+         con3 = char.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
+            if con3 then con3:Disconnect() end
+            stop = true
+         end)
+         if con3 then con3:Disconnect() end
+	    task.wait(1.5)
+        if stop then return end
         local players = workspace.Live:GetChildren()
 
         local closePlayer = false
