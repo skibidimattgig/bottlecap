@@ -25,7 +25,7 @@ local function doFunc()
             stop = true
          end)
          if con3 then con3:Disconnect() end
-	    task.wait(1.5)
+	    task.wait(1.1)
         if stop then return end
         local players = workspace.Live:GetChildren()
 
