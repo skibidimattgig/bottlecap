@@ -39,11 +39,11 @@ local function doFunc()
         if not closePlayer then return end
        	local pos = hrp.CFrame
 		char:PivotTo(pos2)
-        task.wait(.5)
+        task.wait(.7)
 		hrp.Anchored = true
-		task.wait(1.25)
+		task.wait(.2)
 		hrp.Anchored = false
-        task.wait(0.2)
+        task.wait(1)
 		char:PivotTo(pos)
     end)
     local con2
