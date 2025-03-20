@@ -12,7 +12,7 @@ local function doFunc()
         if gpe then return end
         if key.KeyCode ~= Enum.KeyCode.Two and key.KeyCode ~= Enum.KeyCode.One then return end
 		
-	task.wait(1.85)
+	task.wait(1.5)
         local stop = false
         local players = workspace.Live:GetChildren()
 
@@ -26,9 +26,9 @@ local function doFunc()
         if not closePlayer then return end
        	local pos = hrp.CFrame
 		char:PivotTo(pos2)
-        task.wait(0.5)
+        task.wait(.5)
 		hrp.Anchored = true
-		task.wait(.85)
+		task.wait(1.25)
 		hrp.Anchored = false
         task.wait(0.2)
 		char:PivotTo(pos)
