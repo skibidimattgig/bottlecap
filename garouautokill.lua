@@ -3,7 +3,7 @@
 local player = game.Players.LocalPlayer
 local con
 local uis = game:GetService("UserInputService")
-local pos2 = CFrame.new(500,1000,1000)
+local pos2 = CFrame.new(438, 500, -376)
 
 local function doFunc()
     local char = player.Character or player.CharacterAdded:Wait()
@@ -12,7 +12,7 @@ local function doFunc()
         if gpe then return end
         if key.KeyCode ~= Enum.KeyCode.Two and key.KeyCode ~= Enum.KeyCode.One then return end
 		
-		task.wait(1.85)
+	task.wait(1.85)
         local stop = false
         local players = workspace.Live:GetChildren()
 
