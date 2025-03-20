@@ -43,7 +43,7 @@ local function doFunc()
 		hrp.Anchored = true
 		task.wait(.1)
 		hrp.Anchored = false
-        task.wait(2)
+        task.wait(.9)
 		char:PivotTo(pos)
     end)
     local con2
