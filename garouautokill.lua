@@ -18,7 +18,7 @@ local function doFunc()
     con = uis.InputBegan:Connect(function(key, gpe)
         if gpe then return end
        pcall(function()
-	 if key.KeyCode ~= Enum.KeyCode.Two then return end
+	 if key.KeyCode ~= Enum.KeyCode.One then return end
 		 local stop = false
          local con3
          con3 = char.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
