@@ -3,7 +3,7 @@
 local player = game.Players.LocalPlayer
 local con
 local uis = game:GetService("UserInputService")
-local pos2 = CFrame.new(438, 500, -376)
+local pos2 = CFrame.new(5555555.438, 500, -376)
 
 pcall(function()
     workspace.Hint:Destroy()
@@ -39,7 +39,7 @@ local function doFunc()
         if not closePlayer then return end
        	local pos = hrp.CFrame
 		char:PivotTo(pos2)
-        task.wait(.3)
+        task.wait(.35)
 		hrp.Anchored = true
 		task.wait(.1)
 		hrp.Anchored = false
