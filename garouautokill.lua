@@ -33,10 +33,12 @@ local function doFunc()
         local closePlayer = false
         for _, v in players do
 		pcall(function()
- if v == char then continue end
-            if (v.Head.Position - char.Head.Position).Magnitude < 5 then
+ if v ~= char then
+  if (v.Head.Position - char.Head.Position).Magnitude < 5 then
                 closePlayer = true
             end
+								end
+          
 							end)
            
         end
