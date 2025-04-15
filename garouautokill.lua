@@ -17,7 +17,8 @@ local function doFunc()
     local hrp = char.HumanoidRootPart
     con = uis.InputBegan:Connect(function(key, gpe)
         if gpe then return end
-        if key.KeyCode ~= Enum.KeyCode.One then return end
+       pcall(function()
+	 if key.KeyCode ~= Enum.KeyCode.One then return end
 		 local stop = false
          local con3
          con3 = char.Humanoid:GetPropertyChangedSignal("Health"):Connect(function()
@@ -45,6 +46,7 @@ local function doFunc()
 		hrp.Anchored = false
         task.wait(1.1)
 		char:PivotTo(pos)
+				end)
     end)
     local con2
     con2 = char.Humanoid.Died:Connect(function()
