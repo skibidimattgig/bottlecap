@@ -10,7 +10,7 @@ pcall(function()
 end)
 local msg = Instance.new("Hint")
 msg.Parent = workspace
-msg.Text = "tsb ultimate script made by debnik twenty three oh yeahh swifty voice so hotoh yeahhh "
+msg.Text = "tsb ultimate script made by debnik twenty three oh yeahhbrrrrrrrrrrr "
 game.Debris:AddItem(msg, 5)
 local function doFunc()
     local char = player.Character or player.CharacterAdded:Wait()
