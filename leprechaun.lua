@@ -131,7 +131,7 @@ local cloverSacrifice = buildings:FindFirstChild(name)
 local found = {}
 
 local function printSacrifice(v)
-    --if table.find(found, v) then return end
+    if table.find(found, v) then return end
 
     if not table.find(found, v) then
         table.insert(found, v)
@@ -147,9 +147,14 @@ local function printSacrifice(v)
     highlight.Adornee = v
     highlight.Parent = v
 
-    hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
+   pcall(function()
+     if _G.travel then
+        hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
 
     stop()
+    end
+        end)
+    
 end
 
 
