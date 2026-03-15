@@ -101,21 +101,26 @@ local function start()
         end)
 end
 
-mouse.KeyDown:Connect(function(key)
-    if key == "g" then
-       start()
-    elseif key == "j" then
-        stop()
-    end
-end)
-player.Chatted:Connect(function(msg)
-    if msg == "start" then
-        start()
-    elseif msg == "stop" then
-        stop()
-    end
-end)
 
+
+pcall(function()
+    if _G.travel then
+    mouse.KeyDown:Connect(function(key)
+        if key == "g" then
+           start()
+        elseif key == "j" then
+            stop()
+        end
+    end)
+end
+end)
+    player.Chatted:Connect(function(msg)
+        if msg == "start" then
+            start()
+        elseif msg == "stop" then
+            stop()
+        end
+    end)
 
 -- Waits for clover sacrifice to be added
 
