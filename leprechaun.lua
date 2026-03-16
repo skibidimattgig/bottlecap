@@ -89,6 +89,7 @@ local function start()
                     waiting = true
 
                     hrp.Anchored = false
+                    hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadpos.Y, roadpos.Z))
                     hrp.AssemblyLinearVelocity = Vector3.new(0,0,0)
                     task.delay(0.5, function()
                         hrp.Anchored = true
