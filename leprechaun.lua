@@ -44,11 +44,11 @@ local function chatPos(msg, pos)
     )
 end
 
-_G.d = 90
+_G.d = 75
 -- raycast positioning
 
 local function checkRaycast()
-    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*_G.d-10, Vector3.new(0,-300,0))
+    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*_G.d, Vector3.new(0,-300,0))
     if raycast then
         return true
     end
@@ -102,7 +102,7 @@ local function start()
 end
 
 
-_G.flykey = _G.flykey or "v"
+_G.flykey = _G.flykey or "g"
 
 _G.stopkey = _G.stopkey or "b"
 
