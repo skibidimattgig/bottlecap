@@ -73,9 +73,11 @@ local function stop()
         hrp.Anchored = false
 
         con:Disconnect()
+            waiting = false
+    con = nil
 end
 local function start()
- if con then return end
+         if con then return end
         -- sets up raycast positioning con
         hrp.Anchored = true
         local yLevel = 100
