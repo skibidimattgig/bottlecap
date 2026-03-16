@@ -99,7 +99,7 @@ local function start()
             end
             waiting = false
 
-            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadpos.Y+yLevel, roadpos.Z-_G.d))
+            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadPos.Y+yLevel, roadPos.Z-_G.d))
         end)
 end
 
