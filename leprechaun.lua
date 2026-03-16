@@ -89,7 +89,7 @@ local function start()
                     waiting = true
 
                     hrp.Anchored = false
-                    task.delay(0.15, function()
+                    task.delay(0.1, function()
                         hrp.Anchored = true
                     end)
                 end
@@ -104,7 +104,7 @@ end
 
 _G.flykey = _G.flykey or "g"
 
-_G.stopkey = _G.stopkey or "b"
+_G.stopkey = _G.stopkey or "j"
 
  mouse.KeyDown:Connect(function(key)
         if key == _G.flykey then
@@ -150,9 +150,9 @@ local function printSacrifice(v, naem)
 
    pcall(function()
      if _G.travel then
-        hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
 
     stop()
+        hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
     end
         end)
     
