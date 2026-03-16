@@ -64,7 +64,7 @@ road.DescendantAdded:Connect(function(v)
     if v.Name ~= "Road" then return end
     if not v:IsA("BasePart") then return end
     task.wait(1)
-    roadPos = v.Position.X
+    roadPos = v.Position
 end)
 
 local function stop()
@@ -78,7 +78,7 @@ local function start()
  if con then return end
         -- sets up raycast positioning con
         hrp.Anchored = true
-        local yLevel = hrp.Position.Y+200
+        local yLevel = 200
         hrp.CFrame = CFrame.new(Vector3.new(hrp.Position.X, yLevel, hrp.Position.Z))
 
         local waiting = false
@@ -89,7 +89,8 @@ local function start()
                     waiting = true
 
                     hrp.Anchored = false
-                    task.delay(0.1, function()
+                    hrp.AssemblyLinearVelocity = Vector3.new(0,0,0)
+                    task.delay(0.5, function()
                         hrp.Anchored = true
                     end)
                 end
@@ -97,7 +98,7 @@ local function start()
             end
             waiting = false
 
-            hrp.CFrame = CFrame.new(Vector3.new(roadPos, yLevel, hrp.Position.Z-_G.d))
+            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadpos.Y+200, hrp.Position.Z-_G.d))
         end)
 end
 
