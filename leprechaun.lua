@@ -48,7 +48,7 @@ _G.d = 150
 -- raycast positioning
 
 local function checkRaycast()
-    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*/3, Vector3.new(0,-300,0))
+    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*(_G.d/3), Vector3.new(0,-300,0))
     if raycast then
         return true
     end
