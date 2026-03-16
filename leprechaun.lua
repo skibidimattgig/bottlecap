@@ -152,7 +152,8 @@ local function printSacrifice(v, naem)
    pcall(function()
      if _G.travel then
 
-    stop()
+       hrp.Anchored = false
+        con:Disconnect()
         hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
     end
         end)
