@@ -78,7 +78,7 @@ local function start()
  if con then return end
         -- sets up raycast positioning con
         hrp.Anchored = true
-        local yLevel = 200
+        local yLevel = 100
         hrp.CFrame = CFrame.new(Vector3.new(hrp.Position.X, yLevel, hrp.Position.Z))
 
         local waiting = false
@@ -98,7 +98,7 @@ local function start()
             end
             waiting = false
 
-            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadpos.Y+200, hrp.Position.Z-_G.d))
+            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadpos.Y+yLevel, hrp.Position.Z-_G.d))
         end)
 end
 
