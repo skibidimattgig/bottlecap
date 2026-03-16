@@ -59,7 +59,7 @@ end
 local con 
 
 local road = map.Roads
-local roadPos = hrp.Position.X
+local roadPos = hrp.Position
 road.DescendantAdded:Connect(function(v)
     if v.Name ~= "Road" then return end
     if not v:IsA("BasePart") then return end
