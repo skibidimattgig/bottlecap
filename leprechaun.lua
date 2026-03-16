@@ -157,6 +157,7 @@ local function printSacrifice(v, naem)
 
        hrp.Anchored = false
         con:Disconnect()
+        con = nil
         hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
     end
         end)
