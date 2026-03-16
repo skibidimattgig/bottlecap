@@ -143,6 +143,10 @@ local function printSacrifice(v, naem)
     end
 
     local posPart = v:FindFirstChildOfClass("Part", true)
+    if naem == name2 then
+        posPart = v:FindFirstChild("Handle", true)
+    end
+    
     chatPos(naem.." found at ", posPart.Position)
 
     local highlight = Instance.new("Highlight")
