@@ -102,13 +102,16 @@ local function start()
 end
 
 
+_G.flykey = _G.flykey or "v"
+
+_G.stopkey = _G.stopkey or "b"
 
 pcall(function()
     if _G.travel then
     mouse.KeyDown:Connect(function(key)
-        if key == "g" then
+        if key == _G.flykey then
            start()
-        elseif key == "j" then
+        elseif key == _G.stopkey then
             stop()
         end
     end)
