@@ -160,7 +160,8 @@ local function printSacrifice(v, naem)
      if _G.travel then
 
        hrp.Anchored = false
-        con:Disconnect()
+        if con then con:Disconnect() end
+                con = nil
         con = nil
         hrp.CFrame = CFrame.new(posPart.Position+Vector3.new(0,10,0))
     end
