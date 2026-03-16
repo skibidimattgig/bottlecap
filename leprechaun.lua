@@ -124,12 +124,14 @@ _G.stopkey = _G.stopkey or "b"
 -- Waits for clover sacrifice to be added
 
 local name = "CloverSacrifice"
+local name2 = "TheTreeOfFortune"
 
 local cloverSacrifice = buildings:FindFirstChild(name)
+local tree = buildings:FindFirstChild(name2)
 
 local found = {}
 
-local function printSacrifice(v)
+local function printSacrifice(v, naem)
     if table.find(found, v) then return end
 
     if not table.find(found, v) then
@@ -137,7 +139,7 @@ local function printSacrifice(v)
     end
 
     local posPart = v:FindFirstChildOfClass("Part", true)
-    chatPos(name.." found at ", posPart.Position)
+    chatPos(naem.." found at ", posPart.Position)
 
     local highlight = Instance.new("Highlight")
     highlight.FillColor = Color3.fromRGB(255, 255, 255)
@@ -158,11 +160,19 @@ end
 
 
 if cloverSacrifice then
-    printSacrifice(cloverSacrifice)
+    printSacrifice(cloverSacrifice, name)
+end
+if tree then
+    printSacrifice(tree, name2)
 end
 --
 buildings.ChildAdded:Connect(function(child)
-    if child.Name ~= name then return end
+    if child.Name == name then
 
-    printSacrifice(child)
+    printSacrifice(child, name)
+        elseif child.Name == name2 then
+
+    printSacrifice(child, name2)
+        end
+
 end)
