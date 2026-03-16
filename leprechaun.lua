@@ -44,11 +44,11 @@ local function chatPos(msg, pos)
     )
 end
 
-_G.d = 75
+_G.d = 150
 -- raycast positioning
 
 local function checkRaycast()
-    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*_G.d, Vector3.new(0,-300,0))
+    local raycast = Workspace:Raycast(hrp.Position+hrp.CFrame.LookVector*/3, Vector3.new(0,-300,0))
     if raycast then
         return true
     end
@@ -101,7 +101,7 @@ local function start()
             end
             waiting = false
 
-            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadPos.Y+yLevel, roadPos.Z-_G.d))
+            hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadPos.Y+yLevel, hrp.Position.Z-_G.d))
         end)
 end
 
