@@ -60,9 +60,11 @@ local con
 
 local road = map.Roads
 local roadPos = hrp.Position
+local roadPos2 = hrp.Position
 road.DescendantAdded:Connect(function(v)
     if v.Name ~= "Road" then return end
     if not v:IsA("BasePart") then return end
+    roadPos2 = v.Position
     task.wait(1)
     roadPos = v.Position
 end)
@@ -90,7 +92,7 @@ local function start()
                 if not waiting then
                     waiting = true
 
-                    hrp.CFrame = CFrame.new(Vector3.new(roadPos.X, roadPos.Y+4, roadPos.Z))
+                    hrp.CFrame = CFrame.new(Vector3.new(roadPos2.X, roadPos2.Y+4, roadPos2.Z))
                     hrp.AssemblyLinearVelocity = Vector3.new(0,0,0)
                     hrp.Anchored = false
                     task.delay(0.5, function()
